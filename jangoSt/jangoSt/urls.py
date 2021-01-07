@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
-from fcuser.views import home
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('fcuser/', include('fcuser.urls')),
-    path('', home),
+    path('', include('fcuser.urls')),
+
 ]
+
+
+# py manage.py createsuperuser       어드민 아이디 만드는 명령어

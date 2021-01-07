@@ -120,7 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-
+# static - CSS, 자바스크립트, 이미지등의 파일 파일 넣어두는데에 사용
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [   # 폴더위치를 알려줌
     os.path.join(BASE_DIR, 'static'),

@@ -11,34 +11,39 @@ def home(request):
 
     if user_id:
         fcuser = Fcuser.objects.get(pk=user_id)
-        return HttpResponse(fcuser.username)
+        return render(request, 'home_login.html')
 
-    return HttpResponse('home')
+    return render(request, 'home_basic.html')
 
 
+# 로그아웃
 def logout(request):
+
     if request.session.get('user'):
         del(request.session['user'])
 
-    return redirect("/")
+    return render(request, "home_basic.html")
 
 
+# 로그인
 def login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
             request.session['user'] = form.user_id
 
-            return redirect('/')
+            return redirect('./home_login')
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
 
+# 회원가입
 def register(request):
     if request.method == 'GET':
         return render(request, 'register.html')
     elif request.method == 'POST':
+        # get : 딕셔너리에 값이 없으면 다음 값 (None) 을 출력하게 해줌
         username = request.POST.get('username', None)
         useremail = request.POST.get('useremail', None)
         password = request.POST.get('password', None)
@@ -56,9 +61,9 @@ def register(request):
             fcuser = Fcuser(
                 username=username,
                 useremaill=useremail,
-                password=make_password(password)
+                password=make_password(password)     # make_password 비밀번호 암호화
             )
 
             fcuser.save()
-            return HttpResponse("회원가입이 완료되었습니다.")
+            return redirect('/login')
         return render(request, 'register.html', res_date)

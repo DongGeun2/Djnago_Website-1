@@ -16,8 +16,8 @@
 <div class="row mt-5">
     <div class="col-12">
         <form method="POST" action="">
-          {% csrf_token %}
-            <div class="mb-3">
+          {% csrf_token %}       <!--  장고에서 폼사용시 꼭 적용 // 코드 암호화  -->    
+            <div class="mb-3">   
               <label for="username" class="form-label">사용자 이름</label>
               <input type="text" class="form-control" id="username" name="username">
             </div>

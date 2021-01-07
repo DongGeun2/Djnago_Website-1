@@ -17,14 +17,15 @@
     </head>
 
     <body>
-    <div class="container">
-      {% block contents %}
-      {% endblock %}  
+        <h1> 로그인 되었습니다. </h1>
+        <div class="logout_1">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <button  type="submit" class="btn btn-primary" id="logout_1"><a href="./logout">로그아웃</a></button>
+            </form>
+        </div>
+
+
     </div>
     </div>
     </body>
-
-
-
-
-</html>
