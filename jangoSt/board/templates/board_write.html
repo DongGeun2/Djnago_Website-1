@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block contents %}
+<div class="row mt-5">
+    <div class="col-12">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            
+          <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_labal }}"
+               placeholder="{{ field.label }}" name="{{ field.name }}" />
+        </div>
+        {% endfor %}
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-primary">글쓰기</button>
+    </div>
+</div>
+
+{% endblock %}
